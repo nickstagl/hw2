@@ -368,7 +368,7 @@ for role in roles
   a = Actor.find_by({"id" => role["actor_id"]})
   a_name = a["name"]
 
-  c = roles["character_name"]
+  c = role["character_name"]
 
   puts "#{m_name} #{a_name} #{c}"
 end
@@ -381,7 +381,11 @@ puts ""
 puts ""
 puts "Represented by agent"
 puts "===================="
-
+actors = Actor.all
+for actor in actors
+  a = actor["name"]
+  puts "#{a}"
+end
 puts ""
 
 # Query the actor data and loop through the results to display the agent's list of represented actors output.
