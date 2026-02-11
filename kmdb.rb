@@ -112,13 +112,13 @@ Role.destroy_all
 agent = Agent.new
 agent["name"] = "Nick Stagl"
 agent.save
-p agent
+
 
 #Populate studio table
 studio = Studio.new
 studio["name"] = "Warner Bros."
 studio.save
-p studio
+
 #populating movies creating studio_id's first
 wb = Studio.find_by({"name" => "Warner Bros."})
 movie = Movie.new
@@ -222,7 +222,7 @@ mg = Actor.find_by({"name" => "Maggie Gyllenhaal"})
 mf = Actor.find_by({"name" => "Morgan Freeman"})
 ah = Actor.find_by({"name" => "Anne Hathaway"})
 th = Actor.find_by({"name" => "Tom Hardy"})
-jg = Actor.find_by({"name" => "Jospeh Gordon-Levitt"})
+jg = Actor.find_by({"name" => "Joseph Gordon-Levitt"})
 
 bb = Movie.find_by({"title" => "Batman Begins"})
 dk = Movie.find_by({"title" => "The Dark Knight"})
