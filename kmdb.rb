@@ -344,18 +344,34 @@ for movie in movies
   t = movie["title"]
   y = movie["year_released"]
   r = movie["rated"]
-  s = movie["studio_id"]
-  puts "#{t} #{y} #{r} #{s}"
+  #find studio ids and then assign name
+  s = Studio.find_by({"id" => movie["studio_id"]})
+  s_name = s["name"]
+  puts "#{t} #{y} #{r} #{s_name}"
 end
 puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
+roles = Role.all
+for role in roles
+  m = Movie.find_by({"id" => role["movie_id"]})
+  m_name = m["title"]
+
+  a = Actor.find_by({"id" => role["actor_id"]})
+  a_name = a["name"]
+
+  c = roles["character_name"]
+
+  puts "#{m_name} #{a_name} #{c}"
+end
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
