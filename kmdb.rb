@@ -79,11 +79,11 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
-#Movie.destroy_all
-#Studio.destroy_all
-#Agent.destroy_all
-#Actor.destroy_all
-#Role.destroy_all
+Movie.destroy_all
+Studio.destroy_all
+Agent.destroy_all
+Actor.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model.
 # TODO!
@@ -107,6 +107,234 @@
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+# populate agent table
+agent = Agent.new
+agent["name"] = "Nick Stagl"
+agent.save
+p agent
+
+#Populate studio table
+studio = Studio.new
+studio["name"] = "Warner Bros."
+studio.save
+p studio
+#populating movies creating studio_id's first
+wb = Studio.find_by({"name" => "Warner Bros."})
+movie = Movie.new
+movie["title"] = "Batman Begins"
+movie["year_released"] = 2005
+movie["rated"] = "PG-13"
+movie["studio_id"] = wb["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight"
+movie["year_released"] = 2008
+movie["rated"] = "PG-13"
+movie["studio_id"] = wb["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight Rises"
+movie["year_released"] = 2012
+movie["rated"] = "PG-13"
+movie["studio_id"] = wb["id"]
+movie.save
+
+#populating actor table and defining the agent foreign key
+ns = Agent.find_by({"name" => "Nick Stagl"})
+actor = Actor.new
+actor["name"] = "Christian Bale"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Michael Caine"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Liam Neeson"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Katie Holmes"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Gary Oldman"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Cillian Murphy"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Heath Ledger"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Aaron Eckhart"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Maggie Gyllenhaal"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Morgan Freeman"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Anne Hathaway"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Tom Hardy"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Joseph Gordon-Levitt"
+actor["agent_id"] = ns["id"]
+actor.save 
+
+# Populate the Characters table and define actor and movie foreign keys
+cb = Actor.find_by({"name" => "Christian Bale"})
+mc = Actor.find_by({"name" => "Michael Caine"})
+ln = Actor.find_by({"name" => "Liam Neeson"})
+kh = Actor.find_by({"name" => "Katie Holmes"})
+go = Actor.find_by({"name" => "Gary Oldman"})
+cm = Actor.find_by({"name" => "Cillian Murphy"})
+hl = Actor.find_by({"name" => "Heath Ledger"})
+ae = Actor.find_by({"name" => "Aaron Eckhart"})
+mg = Actor.find_by({"name" => "Maggie Gyllenhaal"})
+mf = Actor.find_by({"name" => "Morgan Freeman"})
+ah = Actor.find_by({"name" => "Anne Hathaway"})
+th = Actor.find_by({"name" => "Tom Hardy"})
+jg = Actor.find_by({"name" => "Jospeh Gordon-Levitt"})
+
+bb = Movie.find_by({"title" => "Batman Begins"})
+dk = Movie.find_by({"title" => "The Dark Knight"})
+dkr = Movie.find_by({"title" => "The Dark Knight Rises"})
+
+role = Role.new
+role["character_name"] = "Bruce Wayne"
+role["actor_id"] = cb["id"]
+role["movie_id"] = bb["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Alfred Pennyworth"
+role["actor_id"] = mc["id"]
+role["movie_id"] = bb["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Ra's al Ghul"
+role["actor_id"] = ln["id"]
+role["movie_id"] = bb["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Rachel Dawes"
+role["actor_id"] = kh["id"]
+role["movie_id"] = bb["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "James Gordon"
+role["actor_id"] = go["id"]
+role["movie_id"] = bb["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Joanthan Crane"
+role["actor_id"] = cm["id"]
+role["movie_id"] = bb["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Bruce Wayne"
+role["actor_id"] = cb["id"]
+role["movie_id"] = dk["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Joker"
+role["actor_id"] = hl["id"]
+role["movie_id"] = dk["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Harvey Dent"
+role["actor_id"] = ae["id"]
+role["movie_id"] = dk["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Rachel Dawes"
+role["actor_id"] = mg["id"]
+role["movie_id"] = dk["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "James Gordon"
+role["actor_id"] = go["id"]
+role["movie_id"] = dk["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Lucius Fox"
+role["actor_id"] = mf["id"]
+role["movie_id"] = dk["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Bruce Wayne"
+role["actor_id"] = cb["id"]
+role["movie_id"] = dkr["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Selina Kyle"
+role["actor_id"] = ah["id"]
+role["movie_id"] = dkr["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Bane"
+role["actor_id"] = th["id"]
+role["movie_id"] = dkr["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "James Gordon"
+role["actor_id"] = go["id"]
+role["movie_id"] = dkr["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "Lucius Fox"
+role["actor_id"] = mf["id"]
+role["movie_id"] = dkr["id"]
+role.save
+
+role = Role.new
+role["character_name"] = "John Blake"
+role["actor_id"] = jg["id"]
+role["movie_id"] = dkr["id"]
+role.save
 
 # Prints a header for the movies output
 puts "Movies"
