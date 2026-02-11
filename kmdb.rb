@@ -339,6 +339,14 @@ role.save
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
+movies = Movie.all
+for movie in movies
+  t = movie["title"]
+  y = movie["year_released"]
+  r = movie["rated"]
+  s = movie["studio_id"]
+  puts "#{t} #{y} #{r} #{s}"
+end
 puts ""
 
 # Query the movies data and loop through the results to display the movies output.
@@ -357,6 +365,7 @@ puts ""
 puts ""
 puts "Represented by agent"
 puts "===================="
+
 puts ""
 
 # Query the actor data and loop through the results to display the agent's list of represented actors output.
